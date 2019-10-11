@@ -193,11 +193,10 @@ bol4.addEventListener('click', bol4_function);
 
 
 
-var slider = document.getElementById("myRange");
-var output = document.getElementsById("leesTijd");
+var slider = document.getElementById("leestijd");
+var output = document.getElementById("value");
+
 output.innerHTML = slider.value;
-
-
 slider.oninput = function() {
-  output.innerHTML = this.value;
+  output.innerHTML = this.value + " minuten";
 }

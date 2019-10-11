@@ -8,8 +8,12 @@ body {
   margin: 0;
 }
 
-h1, h2, h3, h4 {
+h1 {
   color: #444;
+}
+
+h2, h3, h4 {
+  color: #fff;
 }
 
 a {
@@ -42,25 +46,55 @@ li a img {
 
 nav ul {
   margin: 0 auto;
-  width: 85vw;
+  width:  80vw;
   display: flex;
   justify-content: space-between;
   list-style-type: none;
   align-items: center;
 }
 
-body>header li {
-  margin: 2em 6em 0 0;
+nav ul li {
+  margin-top: 2em;
 }
 
 body>header li:first-child {
   margin-right: auto;
 }
 
-body>header a {
+nav>ul li a:first-child {
   font-size: 1.2em;
-  color: white;
+  color: #fff;
   font-weight: 500;
+  margin-left: -1em;
+}
+
+nav>ul li:nth-of-type(2) a, nav>ul li:nth-of-type(3) a {
+  visibility: hidden;
+}
+
+nav>ul li a::before {
+  content: "";
+  visibility: visible;
+  position: absolute;
+  height: 2em;
+  width: 2em;
+  background-size: 2em 2em;
+  background-repeat: no-repeat;
+}
+
+nav>ul li:nth-of-type(2) a::before {
+  background-image: url(../img/lijst.svg);
+  margin-top: -0.5em;
+}
+
+nav>ul li:last-of-type a::before {
+  background-image: url(../img/account.svg);
+  margin-top: -0.5em;
+}
+
+body>header li a:hover {
+  cursor: pointer;
+  color: black;
 }
 
 /* __________________________CAROUSEL__________________________ */
@@ -85,7 +119,7 @@ main>section:first-of-type>h1 {
 }
 
 main>section:first-of-type>div div article {
-  background-color: white;
+  background-color: #fff;
   width: 80vw;
   height: 42vh;
   margin: 0 auto;
@@ -95,74 +129,76 @@ main>section:first-of-type>div div article {
   transition: 0.5s ease-in-out;
 }
 
-main>section:first-of-type div div article:hover {
-  background-color: #8b8b8b;
-  color: white;
+main>section:first-of-type div div article:hover,
+main>section:first-of-type>div:last-of-type article:hover {
+  /* Overlay maken */
   transition: 0.3s ease;
 }
 
-main>section:first-of-type>div div article header h2 {
+main>section:first-of-type>div div article header h2,
+main>section:nth-of-type(3)>article header h2 {
   text-align: center;
   margin-top: 5em;
 }
 
-/* main>section:first-of-type > div article header h2:hover {
-  color: white;
-  transition: 0.3s ease;
-} */
-
-main>section:first-of-type>div div article header hr {
-  text-align: center;
-  border-top: 0.01em solid #444;
-  width: 10em;
-  margin-top: -0.5em;
-}
-
-/* main>section:first-of-type > div article header hr:hover {
-  border-top: 0.01em solid white;
-  transition: 0.3s ease;
-} */
-
 /* Verhalen voor naast het carousel voor het medium en grote scherm */
-
-main>section:first-of-type>section {
+main>section:first-of-type>div:last-of-type {
   display: none;
-  background-color: white;
+  background-color: #fff;
   width: 80vw;
   height: 42vh;
 }
 
-main>section:first-of-type>section article {
-  background-color: white;
+main>section:first-of-type>div article {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
   border-radius: 0.5em;
   border: 0.06em solid #73d700;
   transition: 0.5s ease-in-out;
 }
 
-main>section:first-of-type>section article:hover {
-  background-color: #8b8b8b;
-  color: white;
-  transition: 0.3s ease;
+/* Centreren content in de articles */
+main>section:first-of-type>section article header,
+main>section:first-of-type>section article footer,
+main>section>div div.mySlides article header,
+main>section>div div.mySlides article footer,
+main>section article header,
+main>section article footer {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  border: 0.1em solid red;
+  display: flex;
+  margin: 0 auto;
 }
 
-main>section:first-of-type>section article header h2 {
+main>section article header {
+  position: relative;
+  z-index: 5;
   text-align: center;
-  margin-top: 2em;
+  border: 0.1em solid red;
+  margin: 0 auto;
 }
 
-main>section:first-of-type>section article header hr {
-  text-align: center;
-  border-top: 0.01em solid #444;
-  width: 10em;
-  margin-top: -0.5em;
+/* Afbeelding articles */
+main>section>article img,
+section:first-of-type>div div article img,
+main>section:first-of-type>div:last-of-type article img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 /* Navigatie carousel */
-
 .bolletjes {
-  text-align: center;
-  position: relative;
-  margin-bottom: 5em;
+  position: absolute;
+  z-index: 150;
 }
 
 .bol1, .bol2, .bol3, .bol4 {
@@ -230,7 +266,7 @@ main>section:nth-of-type(3) {
 }
 
 main>section:nth-of-type(3)>article {
-  background-color: white;
+  background-color: #fff;
   width: 80vw;
   height: 42vh;
   position: relative;
@@ -240,23 +276,6 @@ main>section:nth-of-type(3)>article {
   transition: 0.3s ease;
 }
 
-main>section:nth-of-type(3)>article:hover {
-  background-color: #8b8b8b;
-  color: white;
-  transition: 0.3s ease;
-}
-
-main>section:nth-of-type(3)>article header h2 {
-  text-align: center;
-  padding-top: 5em;
-}
-
-main>section:nth-of-type(3)>article header hr {
-  text-align: center;
-  border-top: 0.01em solid #444;
-  width: 12em;
-  margin-top: -0.5em;
-}
 
 /* __________________________FOOTER__________________________ */
 
@@ -272,7 +291,7 @@ section:last-of-type>footer h3 {
   text-align: center;
   padding-top: 1em;
   font-weight: 400;
-  color: white;
+  color: #fff;
 }
 
 /* __________________________BREAKPOINTS__________________________ */
@@ -280,6 +299,23 @@ section:last-of-type>footer h3 {
 /* Medium scherm */
 
 @media (min-width: 800px) {
+  /* Navbar */
+  nav>a {
+    font-size: 1.2em;
+    color: #fff;
+    font-weight: 500;
+  }
+  nav>ul li:nth-of-type(2) a, nav>ul li:nth-of-type(3) a {
+    visibility: visible;
+    transition: 0.5s ease-in-out;
+  }
+
+  nav>ul li:nth-of-type(2) a {
+    margin-right: 8em;
+  }
+  a:first-of-type::before {
+    margin-left: -3em;
+  }
   /* Gehele teaser met carousel en 4 verhalen ernaast */
   main>section:first-of-type {
     width: 80vw;
@@ -297,7 +333,7 @@ section:last-of-type>footer h3 {
   }
   main>section:first-of-type>h1 {
     grid-row: 1/3;
-    grid-column: 1/2;
+    grid-column: 1/3;
   }
   main>section:first-of-type>div div {
     width: 36vw;
@@ -312,27 +348,27 @@ section:last-of-type>footer h3 {
     grid-column: 1/2;
   }
   /* Verhalen naast het carousel */
-  main>section:first-of-type>section {
+main>section:first-of-type>div:last-of-type {
     width: 40vw;
     height: 34vh;
     grid-row: 2/3;
     grid-column: 3/2;
-
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-row-gap: 1em;
     grid-column-gap: 1em;
   }
-  main>section:first-of-type>section article {
+main>section:first-of-type>div:last-of-type article {
     width: 19vw;
     height: 16vh;
   }
-  .bolletjes {
-    grid-row: 3/3;
-    grid-column: 1/2;
-  }
+
   /* Filters */
+  form {
+    display: grid;
+    grid-column: 1/3;
+  }
   main>section:nth-of-type(2) {
     display: grid;
     grid-template-rows: 1fr 1fr;
@@ -340,17 +376,16 @@ section:last-of-type>footer h3 {
   }
   main>section:nth-of-type(2)>h1 {
     grid-row: 1/2;
-    grid-column: 1/2;
+    grid-column: 1/3;
   }
   main>section:nth-of-type(2)>form fieldset:first-of-type {
     grid-row: 2/2;
-    grid-column: 1/2;
+    width: 35vw;
   }
   main>section:nth-of-type(2)>form fieldset:nth-of-type(2) {
     grid-row: 2/2;
-    grid-column: 2/2;
+        width: 35vw;
   }
-
   /*  Alle verhalen */
   main>section:nth-of-type(3) {
     display: grid;
@@ -361,7 +396,7 @@ section:last-of-type>footer h3 {
     width: 38vw;
     height: 34vh;
     grid-row-gap: 1em;
-    grid-column-gap:1em;
+    grid-column-gap: 1em;
   }
   /* Footer */
   section:last-of-type>footer {
@@ -372,8 +407,6 @@ section:last-of-type>footer h3 {
 /* Groot scherm */
 
 @media (min-width: 1200px) {
-
-
   /* Footer */
   section:last-of-type>footer {
     margin-top: 20em;
